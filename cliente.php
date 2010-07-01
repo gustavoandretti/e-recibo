@@ -1,6 +1,8 @@
 <?php
 
-error_reporting(E_ERROR);
+	error_reporting(E_ERROR);
+
+	include("./validacao.php");
 
 	$data = date('d-m-Y');
 	$data_ = explode('-',$data);
@@ -10,35 +12,9 @@ error_reporting(E_ERROR);
 
 	#Cliente
 
-	function verificaCampoObrigatorio($campo, $msg)
-	{
-		if($_POST[$campo] != '')
-		{
-			$cliNome = $_POST[$campo];
-			return true;
-		}
-		else
-		{
-			marcaCampoObrigatorio($campo, $msg);
-			return false;
-		}
-	}
-
-	function marcaCampoObrigatorio($campo, $msg)
-	{
-		echo "<script>setTimeout(' " .
-			
-			" document.getElementById(\'$campo\').style.backgroundColor = \'#fDD\'; " .
-
-			" document.getElementById(\'$campo\').focus(); ' " .
-			
-			" , 200); </script>";
-	}
-
 	if(verificaCampoObrigatorio('cliNome', 'Nome') &&
 	verificaCampoObrigatorio('cliTelefone', 'Telefone') &&
-	verificaCampoObrigatorio('cliEndereco', 'Endereco')
-	)
+	verificaCampoObrigatorio('cliEndereco', 'Endereco'))
 	{
 		if($_POST['cpf_cnpj'] != '')
 		{
