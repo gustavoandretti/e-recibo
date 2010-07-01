@@ -19,6 +19,8 @@ input, textarea
     padding:4px;
 }
 
+/* Formulario de Clientes */
+
 #cliEmail, #cliNome, #cliEndereco
 {
     width:250px;
