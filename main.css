@@ -1,0 +1,42 @@
+﻿body, input, td, textarea
+{
+    font-family:"Trebuchet MS", "Calibri", "Tahoma";
+    font-size:16px;
+    padding:2px;
+    color:#444;    
+    vertical-align:top;
+}
+
+th
+{
+    height:50px;
+}
+
+input, textarea
+{
+    font-size:18px;
+    border:1px solid #8cf;
+    padding:4px;
+}
+
+#cliEmail, #cliNome, #cliEndereco
+{
+    width:250px;
+    
+}
+
+#cliCpf
+{
+    width:150px;
+}
+
+#cliEndereco
+{
+    height:80px;
+}
+
+#btnInserir
+{
+    width:120px;
+}
+
