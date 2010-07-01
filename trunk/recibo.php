@@ -65,10 +65,15 @@
 		
 
 		$selectCli = "SELECT * FROM cliente WHERE clienteEmail = '$email'";
+		echo $selectCli;
+		exit();
 		$queryCli = mysql_query($selectCli);
 		$res = mysql_fetch_array($queryCli);
 
 		$idCliente = $res[0];
+		$cliNome   = $res[1];
+		echo $cliNome;
+		exit();
 		$servicoData = date('Y-m-d');
 		
 		$insertServ = "INSERT INTO servico(idCliente, descricaoServico, valorServico, numeroRecibo, observacoesRec, observacoesInt, servicoData) VALUES 
@@ -171,6 +176,7 @@
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<link type="text/css" rel="stylesheet" href="main.css"  /> 
 <title>Recibo eletrônico</title>
 </head>
 
