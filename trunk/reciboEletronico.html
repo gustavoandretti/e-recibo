@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<title>Recibo eletrônico</title>
+</head>
+
+<body>
+<form id='reciboEletrônico' action='reciboEletronico.php?send=true' method='post'>
+    <table id='dadosForm'>
+        <th>Dados do cliente:</th>
+        <tr>
+            <td>
+                Nome: 
+            </td>
+            <td>
+                <input id='cliNome' name='cliNome' type='text' />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                CPF/CNPJ: 
+            </td>
+            <td>
+                <input id='cpf_cnpj' name='cpf_cnpj' type='text' />
+            </td>
+        </tr>        
+        <tr>
+            <td>
+                Email: 
+            </td>
+            <td>
+                <input id='cliEmail' name='cliEmail' type='text' />
+            </td>
+        </tr>
+    
+        <tr>
+            <td>
+                Telefone: 
+            </td>
+            <td>
+                <input id='cliTelefone' name='cliTelefone' type='text' />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Endere&ccedil;o: 
+            </td>
+            <td>
+                <input id='cliEndereco' name='cliEndereco' type='text' />
+            </td>
+        </tr>
+    
+        <tr>
+        </tr>
+        <th>Dados do serviço:</th>
+        <tr>
+            <td>
+                Descrição do serviço: 
+            </td>
+            <td>
+                <textarea id='servicoDescricao' name='servicoDescricao' /></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            Valor: 
+            </td>
+            <td>
+                <input id='servicoValor' name='servicoValor' type='text' />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            (Por extenso) 
+            </td>
+            <td>
+                <input id='servicoValorExt' name='servicoValorExt' type='text' />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            Forma de Pagamento: 
+            </td>
+            <td>
+                <input id='formaPgto' name='formaPgto' type='text' />
+            </td>
+        </tr>              
+        <tr>
+            <td>
+            N&uacute;mero do recibo: 
+            </td>
+            <td>
+                <input id='numeroRecibo' name='numeroRecibo' type='text' />
+            </td>
+        </tr>             
+        <tr>
+            <td>
+               Observações do Recibo: 
+            </td>
+            <td>
+                <input id='obsRec' name='obsRec' type='text' />
+            </td>
+        </tr>
+    
+        <tr>
+            <td>
+                Observações internas: 
+            </td>
+            <td>
+                <input id='obsInt' name='obsInt' type='text' />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Local do serviço: 
+            </td>
+            <td>
+                <input id='localServico' name='localServico' type='text' />
+            </td>
+        </tr>
+		<tr>
+        	<td>
+            </td>
+        	<td align='right'>
+	        	<input type='submit'  value='Criar Recibo'/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
