@@ -14,7 +14,7 @@
 		$selectCli = "SELECT * FROM cliente WHERE clienteEmail = '$email'";
 		$queryCli = mysql_query($selectCli);
 		$res = mysql_fetch_array($queryCli);
-	
+		
 		if($res == "")
 		{
 
@@ -28,7 +28,6 @@
 	{
 		
 		$data = date('d-m-Y');
-		echo $data."<br>";
 		$data_ = explode('-',$data);
 		$dia = $data_[0];
 		$mes = $data_[1];
@@ -36,7 +35,8 @@
 
 		#Servico
 		
-		$email = $_POST['clienteEmail'];
+		$email = $_POST['email'];
+		
 		
 		if($_POST['servicoDescricao'] != '')
 		{
@@ -47,6 +47,15 @@
 		{
 			$servicoValor = $_POST['servicoValor'];
 		}
+		if($_POST['servicoValorExt'] != "")
+		{
+			$servicoValorExt = $_POST['servicoValorExt'];
+		}
+		
+		if($_POST['formaPgto'] != "")
+		{
+			$formaPgto = $_POST['formaPgto'];
+		}		
 		
 		if($_POST['numeroRecibo'] != '')
 		{
@@ -62,18 +71,29 @@
 		{
 			$obsInt = $_POST['obsInt'];
 		}
+		if($_POST['localServico'] != '')
+		{
+			$localServico = ucwords($_POST['localServico']);
+		}		
 		
 
 		$selectCli = "SELECT * FROM cliente WHERE clienteEmail = '$email'";
 		echo $selectCli;
 		exit();
+		
+		
 		$queryCli = mysql_query($selectCli);
 		$res = mysql_fetch_array($queryCli);
+		
+		print_r($res);
+		echo "<br><br><br>";
 
-		$idCliente = $res[0];
-		$cliNome   = $res[1];
-		echo $cliNome;
-		exit();
+		$idCliente      = $res[0];
+		$cliNome        = $res[1];
+		$cliCPF         = $res[2];
+		$cliEndereco    = $res[5];
+
+		
 		$servicoData = date('Y-m-d');
 		
 		$insertServ = "INSERT INTO servico(idCliente, descricaoServico, valorServico, numeroRecibo, observacoesRec, observacoesInt, servicoData) VALUES 
@@ -88,8 +108,8 @@
 		
 		
 		$body = "
-	
-	<table width='88%' cellpadding='0' cellspacing='0'>
+	<div id=\"recibo\">
+	<table>
 		<tr>
 			<td align='center' valign='middle' width='15%'><div id='ooh8'>
 				<div id='olc.'><img src='http://docs.google.com/File?id=d49dnft_139c8v95kdb_b' alt='faciltec' /></div>
@@ -101,7 +121,7 @@
 				<p><strong>Av. Maranhão, 593 Sala 306 –  CEP 90.230-041</strong></p>
 				<p><strong>Bairro São Geraldo – Porto   Alegre / RS</strong></p>
 				<p><strong>Fone: (51) 8112-8934 </strong></p>
-				<p><strong>Site: www.faciltec.com.br - e-mail: contato@faciltec.com.br</strong></p>
+				<p><strong>Site: www.faciltec.com.br e-mail: contato@faciltec.com.br</strong></p>
 			</td>
 		</tr>
 	</table>
@@ -111,7 +131,7 @@
 	  
 		<tr>
 			<td>
-				<p align='justify'>Recebemos de  $cliNome, CPF / CNPJ nº $cpf_cnpj estabelecido/residente no endereço $cliEndereco, a importância de R$ $servicoValor ($servicoValorExt), em  $formaPgto, referente aos serviços descritos abaixo:</p>
+				<p align='justify'>Recebemos de  $cliNome,"; if($cliCPF != ""){ $body .="CPF / CNPJ nº $cliCPF";} $body.=" estabelecido/residente no endereço $cliEndereco, a importância de R$ $servicoValor ($servicoValorExt), em  $formaPgto, referente aos serviços descritos abaixo:</p>
 			</td> 
 		</tr>
 	</table>		
@@ -136,12 +156,17 @@
 				<p align='justify'>$obsRec</p>
 			</td>
 		</tr>
+	</table>
+	<br>
+	<br>
+	<table>		
 		<tr>
 			<td>
-				<p align='justify'> $localServico, $dia  de  $mes de  $ano </p>        	
+				<p align='justify'> $localServico, $dia  de  $mes de  $ano. </p>        	
 			</td>
 		</tr>    
-	</table> 	
+	</table>
+</div>	
 		";
 		
 		echo $body;
@@ -176,7 +201,16 @@
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<link type="text/css" rel="stylesheet" href="main.css"  /> 
+<link type="text/css" rel="stylesheet" href="main.css"  />
+<script>
+function setHiddenValue()
+{
+	
+	document.getElementById('email').value = document.getElementById('clienteEmail').value;
+	alert(document.getElementById('email').value);
+
+}
+</script>
 <title>Recibo eletrônico</title>
 </head>
 
@@ -189,7 +223,7 @@
         	Email:
         </td>
         <td>
-        	<input type="text" name="clienteEmail" value="<?php echo $email;?>" />
+        	<input type="text"  id="clienteEmail" name="clienteEmail" value="<?php echo $email;?>"  onBlur="setHiddenValue()" />
         </td>
     	<td>
         	<input type="submit" value="..." >
@@ -202,6 +236,7 @@
 <form id='recibo' action='recibo.php?send=true' method='post'>
 <table>
         <th>Dados do serviço:</th>
+        <input type="hidden" id="email" name="email">
         <tr>
             <td>
                 Descrição do serviço: 
