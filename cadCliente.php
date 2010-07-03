@@ -1,3 +1,8 @@
+<?php
+
+ 	error_reporting(E_ERROR);
+?>
+
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
@@ -6,8 +11,29 @@
 <script src="http://www.google.com/jsapi"></script>
 <link type="text/css" rel="stylesheet" href="main.css"  />
 <script type="text/javascript" src="main.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
 </head>
 <body>
+
+<div class="trigger">Trigger</div>
+<div class="result"></div>
+<div class="log"></div>
+
+$('.log').ajaxSend(function() {
+  $(this).text('Triggered ajaxSend handler.');
+});
+
+$('.trigger').click(function() {
+  $('.result').load('cadCliente.html');
+});
+
+$('.log').ajaxSend(function(e, xhr, settings) {
+  if (settings.url == 'ajax/test.html') {
+    $(this).text('Triggered ajaxSend handler.');
+  }
+});
+
+
 <form id='form1' method='post'>
 <h3>Result:</h3> <ol id="result"></ol>
     <table>
