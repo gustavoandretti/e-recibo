@@ -1,9 +1,7 @@
-﻿<script> 
- 
+﻿
     function txtFocus(t) {
- 
-    setTimeout("t.style.backgroundColor = '';", 200);
+
+        setTimeout(function () { t.style.backgroundColor = ''; }, 600);
  
     }
 
-</script>

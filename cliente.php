@@ -53,12 +53,56 @@
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <title>Cadastro de Cliente</title>
+<script src="http://www.google.com/jsapi"></script>
 <link type="text/css" rel="stylesheet" href="main.css"  /> 
 <script type="text/javascript" src="main.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+<script>
+$(document).ready(function()
+{
+$("#cliEmail").result = function(a) {alert(a); };
+
+	function findValueCallback(event, data, formatted) {
+		$("<li>").html( !data ? "No match!" : "Selected: " + formatted).appendTo("#result");
+	}
+	
+	function formatItem(row) {
+		return row[0] + " (<strong>id: " + row[1] + "</strong>)";
+	}
+	function formatResult(row) {
+		return row[0].replace(/(<.+?>)/gi, '');
+	}
+
+	$("#cliEmail").result(findValueCallback).next().click(function() {
+		$(this).prev().search();
+	});
+
+	$("#cliEmail").autocomplete("teste.php",  {
+		width: 260,
+		selectFirst: true, 
+		formatItem: function(data, i, n, value) {
+			return "asd";
+		}
+	});
+
+	
+
+
+	$("#cliEmail").result(function(event, data, formatted) {
+		if (data)
+			$(this).parent().next().find("input").val(data[1]);
+	});
+});
+</script>
 </head>
 
 <body>
 <form id='form1' method='post'>
+<h3>Result:</h3> <ol id="result"></ol> 
     <table>
         <th>Dados do cliente:</th>
         <tr>
@@ -66,7 +110,17 @@
                 Email: 
             </td>
             <td>
-                <input id='cliEmail' name='cliEmail' type='text' onfocus="txtFocus(this)" value='<?php echo $_REQUEST['cliEmail']; ?>' />
+                <input id='cliEmail' name='cliEmail' type='text' autocomplete='off' class='autocomplete' onfocus="txtFocus(this)" value='<?php echo $_REQUEST['cliEmail']; ?>' />
+				
+
+<p> 
+			<label>Hidden input</label> 
+			<input /> 
+		</p> 
+
+				
+				<div id='divCliEmail' name='divCliEmail' style='display:none; position:relative'></div>
+
             </td>
         </tr>
         <tr>
