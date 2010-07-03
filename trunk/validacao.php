@@ -1,4 +1,4 @@
-﻿<?php 
+<?php
 
 function verificaCampoObrigatorio($campo, $msg)
 {
@@ -16,13 +16,7 @@ function verificaCampoObrigatorio($campo, $msg)
 
 function marcaCampoObrigatorio($campo, $msg)
 {
-	echo "<script>setTimeout(' " .
-			
-		" document.getElementById(\'$campo\').style.backgroundColor = \'#fDD\'; " .
-
-		" document.getElementById(\'$campo\').focus(); ' " .
-			
-		" , 200); </script>";
+	echo "<script> marcaCampoObrigatorio($campo) </script>";
 }
 
 ?>
