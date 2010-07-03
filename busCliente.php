@@ -46,5 +46,6 @@
  		mysql_query($insertCli) or die('Erro ao inserir na tabela de clientes'.mysql_error());
 
  		echo "<script> document.location = 'recibo.php?cliEmail=$cliEmail' </script>";
+
  }
  ?>
