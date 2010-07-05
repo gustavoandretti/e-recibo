@@ -21,6 +21,13 @@ $.ready = function()
 
 	submit = function()
 	{
+
+		document.getElementById('btnInserir').value= " ";
+
+		document.getElementById('btnInserir').disabled = true;
+
+		document.getElementById('loader').style.display = "block";
+
 		$.ajax({
 			  url: "busCliente.php",
 			  type: "POST",
@@ -32,6 +39,12 @@ $.ready = function()
 
 	callback = function(data)
 	{
+		document.getElementById('loader').style.display = "none";
+
+		document.getElementById('btnInserir').value = "Cadastrar";
+
+		document.getElementById('btnInserir').disabled = false;
+
 		if(data.length > 0)
 		{
 
@@ -67,9 +80,7 @@ $.ready = function()
 }
 </script>
 </head>
-<body
-
-
+<body>
 <form id='form1' method='post' onsubmit="return false;">
 
     <table>
@@ -123,6 +134,7 @@ $.ready = function()
 		<tr>
         	<td align='right' colspan ='2'>
 	        	<input type='button' id='btnInserir' name="btnInserir" value='Cadastrar'/>
+	        	<div id="loader"><img src="ajax-loader.gif"></div>
             </td>
         </tr>
     </table>
