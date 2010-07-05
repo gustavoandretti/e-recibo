@@ -4,7 +4,6 @@ function verificaCampoObrigatorio($campo, $msg)
 {
 	if(trim($_POST[$campo]) != '')
 	{
-		$cliNome = $_POST[$campo];
 		return true;
 	}
 	else
@@ -16,7 +15,10 @@ function verificaCampoObrigatorio($campo, $msg)
 
 function marcaCampoObrigatorio($campo, $msg)
 {
-	echo "<script> marcaCampoObrigatorio($campo) </script>";
+	$res[] = 1;
+    $res[] = $campo;
+
+	echo json_encode($res);
 }
 
 ?>
