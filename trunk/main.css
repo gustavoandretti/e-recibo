@@ -38,3 +38,10 @@ input, textarea
 }
 
 
+#loader
+{
+	position: relative;
+	top: -22px;
+	left: -55px;
+	display:none;
+}
