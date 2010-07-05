@@ -12,8 +12,8 @@ function marcaCampoObrigatorio(campo)
 {
 
 	setTimeout(function(){
-	
-		campo.style.backgroundColor = "#fDD";
+		
+		campo.css("background-color", "#fDD");
 
 		campo.focus();
 		
