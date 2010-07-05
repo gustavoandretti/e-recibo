@@ -74,11 +74,12 @@ $.ready = function()
 	//Sets the click action on main button
 	$("#btnInserir").bind("click", submit);
 
+	//Bind campo email
 	$('#cliEmail').val('<?php echo $_REQUEST['cliEmail']; ?>');
 
-	$('input, textarea').first().focus();
+	arredondaCantos();
 
-	$('input, textarea').corner("round 4px");
+	setaFocoPrimeroCampo();
 
 }
 </script>

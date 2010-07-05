@@ -18,5 +18,14 @@ function marcaCampoObrigatorio(campo)
 		campo.focus();
 		
 	}, 200);
+}
 
+function arredondaCantos()
+{
+	$('input, textarea').corner("round 4px");
+}
+
+function setaFocoPrimeroCampo()
+{
+	$('input, textarea').first().focus();
 }
