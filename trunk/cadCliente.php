@@ -19,14 +19,15 @@
 $.ready = function()
 {
 
+	//Send assinc data and register callback
 	submit = function()
 	{
 
-		document.getElementById('btnInserir').value= " ";
+		$('#btnInserir').val(" ");
 
-		document.getElementById('btnInserir').disabled = true;
+		$('#btnInserir').attr("disabled", true);
 
-		document.getElementById('loader').style.display = "block";
+		$('#loader').css("display", "block");
 
 		$.ajax({
 			  url: "busCliente.php",
@@ -37,13 +38,14 @@ $.ready = function()
 		   })
 	};
 
+	//Callback for assinc call above
 	callback = function(data)
 	{
-		document.getElementById('loader').style.display = "none";
+		$('#btnInserir').val("Cadastrar");
 
-		document.getElementById('btnInserir').value = "Cadastrar";
+		$('#btnInserir').removeAttr("disabled");
 
-		document.getElementById('btnInserir').disabled = false;
+		$('#loader').css("display", "none");
 
 		if(data.length > 0)
 		{
@@ -54,11 +56,12 @@ $.ready = function()
 			}
 			else
 			{
-				marcaCampoObrigatorio(document.getElementById(data[1]));
+				marcaCampoObrigatorio($('#' + data[1]));
 			}
 		}
 	}
 
+	//Captures enters on form, avoid form.submit and make the asinc call
 	$("input").bind("keypress", function(e)
 	{
 		if (e.keyCode == 13)
@@ -68,14 +71,14 @@ $.ready = function()
 		}
 	});
 
-
+	//Sets the click action on main button
 	$("#btnInserir").bind("click", submit);
 
-	$('input').corner();
+	$('input, textarea').corner("round 4px");
 
-	$('textarea').corner();
+	$('#cliEmail').val('<?php echo $_REQUEST['cliEmail']; ?>');
 
-	$('#cliNome').focus();
+	$('input, textarea').first().focus();
 
 }
 </script>
@@ -85,16 +88,16 @@ $.ready = function()
 
     <table>
     	<tr>
-	            <td>
-	                Dados do cliente:
-	            </td>
+			<td>
+				Dados do cliente:
+			</td>
 	   	</tr>
         <tr>
             <td>
                 Nome:
             </td>
             <td>
-                <input id='cliNome' name='cliNome' type='text' onfocus="txtFocus(this)" value='<?php echo $_REQUEST['cliNome']; ?>' />
+                <input id='cliNome' name='cliNome' type='text' onfocus="txtFocus(this)" />
             </td>
         </tr>
         <tr>
@@ -102,7 +105,7 @@ $.ready = function()
                 Telefone:
             </td>
             <td>
-                <input id='cliTelefone' name='cliTelefone' type='text' onfocus="txtFocus(this)" value='<?php echo $_REQUEST['cliTelefone']; ?>' />
+                <input id='cliTelefone' name='cliTelefone' type='text' onfocus="txtFocus(this)" />
             </td>
         </tr>
         <tr>
@@ -110,7 +113,7 @@ $.ready = function()
                 Email:
             </td>
             <td>
-                <input id='cliEmail' name='cliEmail' type='text' onfocus="txtFocus(this)" value='<?php echo $_REQUEST['cliEmail']; ?>' />
+                <input id='cliEmail' name='cliEmail' type='text' onfocus="txtFocus(this)" />
 
             </td>
         </tr>
@@ -128,7 +131,7 @@ $.ready = function()
                 Endere&ccedil;o:
             </td>
             <td>
-                <textarea id='cliEndereco' name='cliEndereco' onfocus="txtFocus(this)" value='<?php echo $_REQUEST['cliEndereco']; ?>'></textarea>
+                <textarea id='cliEndereco' name='cliEndereco' onfocus="txtFocus(this)" ></textarea>
             </td>
         </tr>
 		<tr>
