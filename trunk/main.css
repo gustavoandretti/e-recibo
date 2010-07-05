@@ -7,11 +7,6 @@ body, input, td, textarea
     vertical-align:top;
 }
 
-th
-{
-    height:50px;
-}
-
 input, textarea
 {
     font-size:18px;

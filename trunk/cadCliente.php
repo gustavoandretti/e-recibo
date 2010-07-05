@@ -56,7 +56,7 @@ $.ready = function()
 	});
 
 
-	$("#btnInserir").bind("onclick", submit);
+	$("#btnInserir").bind("click", submit);
 
 	$('input').corner();
 
@@ -122,7 +122,7 @@ $.ready = function()
         </tr>
 		<tr>
         	<td align='right' colspan ='2'>
-	        	<input type='button' id='btnInserir' value='Cadastrar'/>
+	        	<input type='button' id='btnInserir' name="btnInserir" value='Cadastrar'/>
             </td>
         </tr>
     </table>
