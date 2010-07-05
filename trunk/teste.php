@@ -1,11 +1,7 @@
-<?php
-
-	$body = 
-	"
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml'>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style>
 body
@@ -23,7 +19,7 @@ p.cabecalhoSubtitulo
 {
 
 	margin-top:-5px;
-	font-family:'Georgia', Times New Roman, Times, serif;
+	font-family:"Georgia", Times New Roman, Times, serif;
     font-size:14px;
 	font-weight:bold;
 	color:#187d9a;
@@ -34,8 +30,7 @@ p.cabecalhoDescricao
 {
 
     font-family:Arial, Helvetica, sans-serif;
-    font-size:12px;
-	font-weight:bold;
+    font-size:14px;
 	color:#333;
 
 }
@@ -46,15 +41,15 @@ table.cabecalho
 
 table.conteudo
 {
-	font-family:'Georgia', Times New Roman, Times, serif;
-    font-size:14px;
+	font-family:"Georgia", Times New Roman, Times, serif;
+    font-size:12px;
 	color:#333;
 
 	
 }
 table.servicos
 {
-	font-family:'Georgia', Times New Roman, Times, serif;
+	font-family:"Georgia", Times New Roman, Times, serif;
     font-size:12px;
 	color:#333;
 	
@@ -90,20 +85,22 @@ padding:-10px;
 
 #menu
 {
-	width:30%;
+	width:20%;
 	color:#FFF;
 
 }
 
 #content
 {
-	width:40%;
+	width:60%;
+	max-width:600px;
+
 }
 
 
 #sub-section
 {
-	width:29.9%;
+	width:19.9%;
 }
 
 #footer
@@ -116,23 +113,23 @@ padding:-10px;
 </head>
 
 <body>
-<div id='header' align='center'>
+<div id="header" align="center">
 	<img src='headerRecibo.jpg' alt='faciltec' />
 </div>
 
-<div id='menu'>
+<div id="menu">
 .
 </div>
 
-<div id='content'>
-	<table class='cabecalho'>
+<div id="content">
+	<table align="center" class='cabecalho'>
 		<tr>
 			<td>
 
 			</td>
 			<td>
-				<p class='cabecalhoSubtitulo'>F&aacute;cilTec, Consultoria   em Inform&aacute;tica para sua Resid&ecirc;ncia.</p>
-				<p class='cabecalhoDescricao'>
+				<p class="cabecalhoSubtitulo">F&aacute;cilTec, Consultoria   em Inform&aacute;tica para sua Resid&ecirc;ncia.</p>
+				<p class="cabecalhoDescricao">
                 Ag&ecirc;ncia Primeira Proc. de Dados Ltda.<br />
 				Av. Maranh&atilde;o, 593 Sala 306 –  CEP 90.230-041<br />
 				Bairro S&atilde;o Geraldo – Porto   Alegre / RS<br />
@@ -143,15 +140,14 @@ padding:-10px;
 			</td>
 		</tr>
 	</table>
-	<hr>
-	<table class='conteudo'>   
+	<table class="conteudo">   
 		<tr>
 			<td class='text'>
-				<p align='justify'>Recebemos de  <strong>$cliNome</strong>, "; if($cliCPF != ''){ $body .="CPF / CNPJ nº <strong>$cliCPF</strong> ";} $body.=" estabelecido/residente no endere&ccedil;o <strong>$cliEndereco</strong> , a import&acirc;ncia de R$ <strong>$servicoValor</strong> (<strong>$servicoValorExt</strong>), em  <strong>$formaPgto</strong>, referente aos servi&ccedil;os descritos abaixo:</p>
+				<p align='justify'>Recebemos de  <strong>$cliNome</strong>,"; if($cliCPF != ""){ $body .="CPF / CNPJ nº <strong>$cliCPF</strong>";} $body.=" estabelecido/residente no endere&ccedil;o <strong>$cliEndereco</strong>, a import&acirc;ncia de R$ <strong>$servicoValor</strong> (<strong>$servicoValorExt</strong>), em  <strong>$formaPgto</strong>, referente aos servi&ccedil;os descritos abaixo:</p>
 			</td> 
 		</tr>
 	</table>
-	<table class='servicos'>
+	<table class="servicos">
 		<tr>
 			<td>
 				<strong>Descri&ccedil;&atilde;o dos servi&ccedil;os:</strong>
@@ -169,7 +165,7 @@ padding:-10px;
 		</tr>
 		<tr>
 			<td>
-				$obsRec
+				<p align='justify'>$obsRec</p>
 			</td>
 		</tr>
 		<tr>
@@ -180,13 +176,11 @@ padding:-10px;
 	</table>           
 </div>
 
-<div id='sub-section'>
+<div id="sub-section">
 </div>
 
-<div id='footer'>
+<div id="footer">
 </div>
 
 </body>
-</html>	
-	";
-?>		
+</html>

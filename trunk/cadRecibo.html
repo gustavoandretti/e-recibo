@@ -1,10 +1,3 @@
-<?php
-	error_reporting(E_ERROR);
-	if($_GET['email'] != "")
-	{
-		$email = $_GET['email'];
-	}
-?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
@@ -15,7 +8,7 @@ function setHiddenValue()
 {
 	
 	document.getElementById('email').value = document.getElementById('clienteEmail').value;
-	//alert(document.getElementById('email').value);
+	alert(document.getElementById('email').value);
 
 }
 </script>
@@ -25,7 +18,7 @@ function setHiddenValue()
 </head>
 
 <body>
-<form name="procuraCliente"  method="post" action="busRecibo.php?search=true">
+<form name="procuraCliente"  method="post" action="cadRecibo.php?search=true">
 <table>
 	<th>Procura Cliente</th>
 	<tr>
@@ -33,7 +26,7 @@ function setHiddenValue()
         	Email:
         </td>
         <td>
-        	<input type="text"  id="clienteEmail" name="clienteEmail" value="<?php echo $email;?>" />
+        	<input type="text"  id="clienteEmail" name="clienteEmail" value="<?php echo $email;?>"  onBlur="setHiddenValue()" />
         </td>
     	<td>
         	<input type="submit" value="..." >
@@ -43,14 +36,10 @@ function setHiddenValue()
 </form>
 <br>
 <br>
-<form onsubmit="setHiddenValue()" id='recibo' action='busRecibo.php?send=true' method='post'>
+<form id='recibo' action='cadRecibo.php?send=true' method='post'>
 <table>
-		<tr>
-        	<td>Dados do serviço:</td>
-         </tr>
-         <tr>
-        	<td><input type="hidden" id="email" name="email"></td>
-         </tr>
+        <th>Dados do serviço:</th>
+        <input type="hidden" id="email" name="email">
         <tr>
             <td>
                 Descrição do serviço: 
