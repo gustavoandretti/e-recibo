@@ -74,11 +74,11 @@ $.ready = function()
 	//Sets the click action on main button
 	$("#btnInserir").bind("click", submit);
 
-	$('input, textarea').corner("round 4px");
-
 	$('#cliEmail').val('<?php echo $_REQUEST['cliEmail']; ?>');
 
 	$('input, textarea').first().focus();
+
+	$('input, textarea').corner("round 4px");
 
 }
 </script>
@@ -88,7 +88,7 @@ $.ready = function()
 
     <table>
     	<tr>
-			<td>
+			<td colspan="2">
 				Dados do cliente:
 			</td>
 	   	</tr>
