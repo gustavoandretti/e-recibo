@@ -1,6 +1,6 @@
 <?php
 
-function verificaCampoObrigatorio($campo, $msg)
+function verificaCampoObrigatorio($campo, $campoFoco=0)
 {
 	if(trim($_POST[$campo]) != '')
 	{
@@ -8,12 +8,12 @@ function verificaCampoObrigatorio($campo, $msg)
 	}
 	else
 	{
-		marcaCampoObrigatorio($campo, $msg);
+		marcaCampoObrigatorio(($campoFoco!=0)? $campo : $campoFoco);
 		return false;
 	}
 }
 
-function marcaCampoObrigatorio($campo, $msg)
+function marcaCampoObrigatorio($campo)
 {
 	$res[] = 1;
     $res[] = $campo;
