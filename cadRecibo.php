@@ -9,15 +9,15 @@
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<link type="text/css" rel="stylesheet" href="css\main.css"  />
-<link type="text/css" rel="stylesheet" href="css\smoothness/jquery-ui-1.8.2.custom.css"  />
-<script type="text/javascript" src="main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery-1.4.2.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery-ui-1.8.2.custom.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery.corner.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="extenso.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery.formatCurrency-1.4.0.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery.formatCurrency.pt-BR.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<link type="text/css" rel="stylesheet" href="css/main.css"  />
+<link type="text/css" rel="stylesheet" href="css/smoothness/jquery-ui-1.8.2.custom.css"  />
+<script type="text/javascript" src="js/main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery.corner.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/extenso.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery.formatCurrency-1.4.0.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery.formatCurrency.pt-BR.js" xmlns="http://www.w3.org/1999/xhtml"></script>
 <script>
 
 $.ready = function()
@@ -26,7 +26,7 @@ $.ready = function()
 
 	submit = function()
 	{
-		internal_submit('busRecibo.php', $('#frmRecibo'), sucess_callback);
+		internal_submit('bus/busRecibo.php', $('#frmRecibo'), sucess_callback);
 	};
 
 	sucess_callback = function(data)
@@ -35,7 +35,7 @@ $.ready = function()
 	}
 
 	$("#frmCliente input[type=text]").autocomplete({
-			source: "busPesquisaCliente.php",
+			source: "bus/busPesquisaCliente.php",
 			minLength: 1,
 			select: function(event, ui) {
 				if(ui.item)
@@ -94,13 +94,13 @@ $.ready = function()
 
 	visualiza_endereco = function(e)
 	{
-		if(e.srcElement.checked == true)
-			$("#localServico").css("display", "none");
+		if(e.srcElement.checked)
+			$("#trLocalServico").css("display", "none");
 		else
 		{
-			$("#localServico").css("display", "block");
+			$("#trLocalServico").css("display", "block");
 
-			$("#localServico").focus();
+			$("#trLocalServico").focus();
 		}
 
 	}
@@ -108,6 +108,18 @@ $.ready = function()
 	novo_recibo = function()
 	{
 		document.location = 'cadRecibo.php';
+	}
+
+	exibir_obs = function(e)
+	{
+		if(!e.srcElement.checked)
+			$("#trObsInt").css("display", "none");
+		else
+		{
+			$("#trObsInt").css("display", "block");
+
+			$("#trObsInt").focus();
+		}
 	}
 
 	//Sets the click action on main button
@@ -120,6 +132,9 @@ $.ready = function()
 	$("#servicoValor").bind("focus", seta_valor_original);
 
 	$("#localServicoCliente").bind("change", visualiza_endereco);
+
+	$("#obsIntExibir").bind("change", exibir_obs);
+
 
 	$("#btnNovoRecibo").bind("click", novo_recibo);
 
@@ -137,7 +152,9 @@ $.ready = function()
 
 	capturaEnters('frmCliente', function() { });
 
-	$("#localServico").css("display", "none");
+	$("#trLocalServico").css("display", "none");
+
+	$("#trObsInt").css("display", "none");
 
 	arredondaCantos();
 
@@ -157,8 +174,18 @@ function setHiddenValue()
 </head>
 
 <body>
+  <div id="div-conteudo">
+
+	<!-- Logo & Nuvens Topo -->
+	<div id="img-nuvem1"></div>
+	<div id="img-slogan"></div>
+	<div id="img-logo"></div>
+
+	<div id="div-innerContent">
+
+
 <form id="frmCliente"  method="post"  onsubmit="return false;">
-<table class="innerTable">
+<table class="innerTable" align="center">
 	<tr>
 		<td colspan="4" class="tdTitulo">
 			Pesquisa de Clientes
@@ -192,7 +219,7 @@ function setHiddenValue()
 <br />
 <form id='frmRecibo' onsubmit="return false;" method='post'>
 <input type="hidden" id="hdnClienteId" name="hdnClienteId">
-<table class="innerTable">
+<table class="innerTable" align="center">
 		<tr>
         	<td colspan="2" class="tdTitulo">Dados do Serviço</td>
          </tr>
@@ -227,8 +254,16 @@ function setHiddenValue()
             </td>
         </tr>
         <tr>
+			<td>
+				Observações:
+			</td>
+			<td>
+				<input type="checkbox" id="obsIntExibir">Exibir
+			</td>
+        </tr>
+        <tr id="trObsInt">
             <td>
-                Observações:
+                &nbsp;
             </td>
             <td>
                 <textarea id='obsInt' name='obsInt' type='text' /></textarea>
@@ -242,7 +277,7 @@ function setHiddenValue()
 				<input type="checkbox" id="localServicoCliente" checked="true">Usar endereço do cliente.
 			</td>
         </tr>
-        <tr>
+        <tr id="trLocalServico">
             <td>
                 &nbsp;
             </td>
@@ -251,12 +286,14 @@ function setHiddenValue()
             </td>
         </tr>
 		<tr>
-        	<td align='right' colspan="2">
+        	<td class="tdButtons" colspan="2">
         		<input type='button' id="btnInserir" value='Criar Recibo' class="button" />
 	        	<input type='button' id="btnNovoRecibo" value='Novo Recibo' class="button" />
             </td>
         </tr>
     </table>
 </form>
+	</div>
+  </div>
 </body>
 </html>
