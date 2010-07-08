@@ -4,11 +4,13 @@
 
  	include("./validacao.php");
 
+ 	include("./db.php");
+
  	#Cliente
 
- 	if(verificaCampoObrigatorio('cliNome', 'Nome') &&
- 	verificaCampoObrigatorio('cliTelefone', 'Telefone') &&
- 	verificaCampoObrigatorio('cliEndereco', 'Endereco'))
+ 	if(verificaCampoObrigatorio('cliNome') &&
+ 	verificaCampoObrigatorio('cliTelefone') &&
+ 	verificaCampoObrigatorio('cliEndereco'))
  	{
  		if($_POST['cpf_cnpj'] != '')
  		{
@@ -32,20 +34,15 @@
  		#insere nova
 
 /*
- 		$connect = mysql_connect('127.0.0.1','root','') or die('erro ao conectar ao DB'.mysql_error());
-
- 		$mydb = mysql_select_db('os',$connect) or die('erro ao selecionar DB'.mysql_error());
-
  		$insertCli = "INSERT INTO cliente(clienteNome, cpf_cnpj, clienteEmail, clienteTelefone, clienteEndereco) VALUES ('$cliNome', '$cpf_cnpj', '$cliEmail', '$cliTelefone', '$cliEndereco')";
 
- 		mysql_query($insertCli) or die('Erro ao inserir na tabela de clientes'.mysql_error());
+ 		db_query($insertCli) or die('Erro ao inserir na tabela de clientes'.mysql_error());
 
 */
 	    $res[] = 0;
 	    $res[] = $cliEmail;
 
 		echo json_encode($res);
- 		//echo "<script> document.location = 'cadRecibo.php?cliEmail=$cliEmail' </script>";
 
- }
+	}
  ?>

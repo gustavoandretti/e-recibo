@@ -1,0 +1,84 @@
+body, input, td, textarea
+{
+    font-family:"Trebuchet MS", "Calibri", "Tahoma";
+    font-size:16px;
+    padding:2px;
+    color:#444;    
+    vertical-align:top;
+}
+
+input, textarea
+{
+    font-size:18px;
+    border:1px solid #8cf;
+    padding:4px;
+}
+
+/* Formulario de Clientes */
+
+#cliEmail, #cliNome, #cliEndereco, #servicoDescricao, #servicoValorExt, #obsRec, #obsInt, #localServico
+{
+    width:400px;
+}
+
+#cliCpf
+{
+    width:150px;
+}
+
+#cliEndereco, #servicoDescricao, #obsRec, #obsInt, #localServico
+{
+    height:80px;
+}
+
+#btnInserir
+{
+    width:120px;
+}
+
+#loader
+{
+	position: relative;
+	top: -22px;
+	left: -55px;
+	display:none;
+}
+
+#txtCliente
+{
+	width:85%;	
+}
+
+.tdGuia
+{
+	width:150px;	
+}
+
+.button
+{
+	background: #ffffff url(images/bg-button.png) 50% 50% repeat-x;	
+	color: #444;
+}
+
+.trInfo
+{
+	color: #666;
+}
+
+.tdInfo
+{
+	font-weight: bold;
+}
+
+.innerTable
+{
+	width: 600px;
+}
+
+.tdTitulo
+{
+	color:#DDD;
+	font-size:28pt;
+	background-color:#FFF;
+	font-weight: bold;
+}
