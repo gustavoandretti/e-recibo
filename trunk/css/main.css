@@ -14,6 +14,18 @@ input, textarea
     padding:4px;
 }
 
+td
+{
+	text-align:left;
+}
+
+td.tdButtons
+{
+	text-align: right;
+	letter-spacing:20px;
+	padding: 20px;
+}
+
 /* Formulario de Clientes */
 
 #cliEmail, #cliNome, #cliEndereco, #servicoDescricao, #servicoValorExt, #obsRec, #obsInt, #localServico
@@ -46,7 +58,7 @@ input, textarea
 
 #txtCliente
 {
-	width:85%;	
+	width:84%;	
 }
 
 .tdGuia
@@ -56,7 +68,7 @@ input, textarea
 
 .button
 {
-	background: #ffffff url(images/bg-button.png) 50% 50% repeat-x;	
+	background: #ffffff url(../images/bg-button.png) 50% 50% repeat-x;	
 	color: #444;
 }
 
@@ -81,4 +93,65 @@ input, textarea
 	font-size:28pt;
 	background-color:#FFF;
 	font-weight: bold;
+}
+
+#div-conteudo
+{
+    position:absolute;
+    width:850px;
+    left:50%;
+    margin-left:-425px;
+    top:0px;
+}
+
+#div-innerContent
+{
+	position:absolute;
+	top: 180px;
+	width: 800px;
+	text-align: center;	
+}
+
+
+/* BG & Logo */
+
+body
+{
+    background-image: url("http://www.faciltec.com.br/imagens/topo-bg.jpg");
+    background-repeat:repeat-x;
+}
+
+#img-nuvem1
+{
+    background-image: url("http://www.faciltec.com.br/imagens/topo-bg-nuvem-1.jpg");
+    background-repeat:no-repeat;
+    position:absolute;
+    left:300px;  
+    top:0px;
+    width:103px;
+    height:143px; 
+}
+
+#img-slogan
+{
+    background-image: url("http://www.faciltec.com.br/imagens/topo-bg-slogan.jpg");
+    background-position:right;
+    background-repeat:no-repeat;
+    position:absolute;
+    top:0px;
+    width:100%;
+    min-width:800px;
+    max-width:1100px;
+    height:143px; 
+}
+
+#img-logo
+{
+    background-image: url("../images/logo.png");
+    background-repeat:no-repeat;
+    position:absolute;
+    left:20px;  
+    top:80px;
+    width:334px;
+    height:72px; 
 }

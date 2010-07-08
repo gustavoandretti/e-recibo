@@ -9,22 +9,22 @@
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <title>Cadastro de Cliente</title>
-<script src="http://www.google.com/jsapi"></script>
-<link type="text/css" rel="stylesheet" href="css\main.css"  />
-<script type="text/javascript" src="main.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery-1.4.2.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
-<script type="text/javascript" src="jquery.corner.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<link type="text/css" rel="stylesheet" href="css/main.css"  />
+<script type="text/javascript" src="js/main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/jquery.corner.js" xmlns="http://www.w3.org/1999/xhtml"></script>
 <script>
 
 $.ready = function()
 {
 	submit = function()
 	{
-		internal_submit('busCliente.php', $('#form1'), sucess_callback);
+		internal_submit('bus/busCliente.php', $('#form1'), sucess_callback);
 	};
 
 	sucess_callback = function(data)
 	{
+	alert(1);
 		document.location = 'cadRecibo.php?clienteId=1';
 	}
 
@@ -50,9 +50,18 @@ $.ready = function()
 </script>
 </head>
 <body>
+  <div id="div-conteudo">
+
+	<!-- Logo & Nuvens Topo -->
+	<div id="img-nuvem1"></div>
+	<div id="img-slogan"></div>
+	<div id="img-logo"></div>
+
+	<div id="div-innerContent">
+
 <form id='form1' method='post' onsubmit="return false;">
 
-    <table>
+    <table class="innerTable" align="center">
     	<tr>
 			<td colspan="2" class="tdTitulo">
 				Dados do cliente:
@@ -101,7 +110,7 @@ $.ready = function()
             </td>
         </tr>
 		<tr>
-        	<td align='right' colspan="2">
+        	<td class="tdButtons" colspan="2">
         		<input type='button' id='btnInserir' name="btnInserir" value='Cadastrar' class="button" />
 	        	<input type='button' id='btnCancelar' name="btnCancelar" value='Cancelar' class="button" />
             </td>
@@ -111,6 +120,8 @@ $.ready = function()
 <script>
 
 </script>
+	</div>
+  </div>
 
 </body>
 </html>
