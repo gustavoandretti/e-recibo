@@ -19,13 +19,12 @@ $.ready = function()
 }
 </script>
 <body>
+<div id="img-logo"></div>
   <div id="div-conteudo">
 
 	<!-- Logo & Nuvens Topo -->
 	<div id="img-nuvem1"></div>
 	<div id="img-slogan"></div>
-	<div id="img-logo"></div>
-
 	<div id="div-innerContent">
 
 		<input type="button" class="button" id="btnRecibo" value="Novo Recibo" />

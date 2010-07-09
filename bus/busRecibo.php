@@ -16,17 +16,14 @@
 
 	$email = $_POST['email'];
 
-	sleep(2);
-
 	if(verificaCampoObrigatorio('hdnClienteId', 'txtCliente') &&
 		verificaCampoObrigatorio('servicoDescricao') &&
 		verificaCampoObrigatorio('servicoValor') )
 	{
-		$res[] = 1;
-	    $res[] = 2;
+		$s = db_query("select * from cliente");
 
-		echo json_encode($res);
-
+		if(!$s)
+			exit();
 
 	/*
 		if($_POST['servicoDescricao'] != '')

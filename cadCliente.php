@@ -10,8 +10,8 @@
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <title>Cadastro de Cliente</title>
 <link type="text/css" rel="stylesheet" href="css/main.css"  />
-<script type="text/javascript" src="js/main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
 <script type="text/javascript" src="js/jquery.corner.js" xmlns="http://www.w3.org/1999/xhtml"></script>
 <script>
 
@@ -50,78 +50,48 @@ $.ready = function()
 </script>
 </head>
 <body>
-  <div id="div-conteudo">
-
-	<!-- Logo & Nuvens Topo -->
-	<div id="img-nuvem1"></div>
-	<div id="img-slogan"></div>
-	<div id="img-logo"></div>
-
-	<div id="div-innerContent">
-
-<form id='form1' method='post' onsubmit="return false;">
-
-    <table class="innerTable" align="center">
-    	<tr>
-			<td colspan="2" class="tdTitulo">
-				Dados do cliente:
-			</td>
-	   	</tr>
+<div id="img-logo"></div>
+<div id="div-conteudo"> 
+  
+  <!-- Logo & Nuvens Topo -->
+  <div id="img-nuvem1"></div>
+  <div id="img-slogan"></div>
+  <div id="div-innerContent">
+    <form id='form1' method='post' onsubmit="return false;">
+      <table class="innerTable" align="center">
         <tr>
-            <td class="tdGuia">
-                Nome:
-            </td>
-            <td>
-                <input id='cliNome' name='cliNome' type='text' />
-            </td>
+          <td colspan="2" class="tdTitulo">Novo Cliente</td>
         </tr>
         <tr>
-            <td>
-                Telefone:
-            </td>
-            <td>
-                <input id='cliTelefone' name='cliTelefone' type='text' />
-            </td>
+          <td class="tdGuia"> Nome: </td>
+          <td><input id='cliNome' name='cliNome' type='text' /></td>
         </tr>
         <tr>
-            <td>
-                Email:
-            </td>
-            <td>
-                <input id='cliEmail' name='cliEmail' type='text' />
-
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                CPF/CNPJ:
-            </td>
-            <td>
-                <input id='cliCpf' name='cliCpf' type='text' value='<?php echo $_REQUEST['cliCpf']; ?>' />
-            </td>
+          <td> Telefone: </td>
+          <td><input id='cliTelefone' name='cliTelefone' type='text' /></td>
         </tr>
         <tr>
-            <td>
-                Endere&ccedil;o:
-            </td>
-            <td>
-                <textarea id='cliEndereco' name='cliEndereco' ></textarea>
-            </td>
+          <td> [ Email: ]</td>
+          <td><input id='cliEmail' name='cliEmail' type='text' /></td>
         </tr>
-		<tr>
-        	<td class="tdButtons" colspan="2">
-        		<input type='button' id='btnInserir' name="btnInserir" value='Cadastrar' class="button" />
-	        	<input type='button' id='btnCancelar' name="btnCancelar" value='Cancelar' class="button" />
-            </td>
+        <tr>
+          <td> [ CPF/CNPJ: ]</td>
+          <td><input id='cliCpf' name='cliCpf' type='text' value='<?php echo $_REQUEST['cliCpf']; ?>' /></td>
         </tr>
-    </table>
-</form>
-<script>
+        <tr>
+          <td> Endere&ccedil;o: </td>
+          <td><textarea id='cliEndereco' name='cliEndereco' ></textarea></td>
+        </tr>
+        <tr>
+          <td class="tdButtons" colspan="2"><input type='button' id='btnInserir' name="btnInserir" value='Cadastrar' class="button" />
+            <input type='button' id='btnCancelar' name="btnCancelar" value='Cancelar' class="button" /></td>
+        </tr>
+      </table>
+    </form>
+    <script>
 
-</script>
-	</div>
+</script> 
   </div>
-
+</div>
 </body>
 </html>

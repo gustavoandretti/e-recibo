@@ -33,15 +33,17 @@
 
  		#insere nova
 
+		$s = db_query("select * from cliente");
+		if(!$s)
+			exit();
 /*
  		$insertCli = "INSERT INTO cliente(clienteNome, cpf_cnpj, clienteEmail, clienteTelefone, clienteEndereco) VALUES ('$cliNome', '$cpf_cnpj', '$cliEmail', '$cliTelefone', '$cliEndereco')";
 
  		db_query($insertCli) or die('Erro ao inserir na tabela de clientes'.mysql_error());
 
-*/
-	    $res[] = 0;
-	    $res[] = $cliEmail;
-
+*/		
+		$res[] = 0;
+		$res[] = $cliEmail;
 		echo json_encode($res);
 
 	}

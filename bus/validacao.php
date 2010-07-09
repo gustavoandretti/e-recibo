@@ -1,14 +1,14 @@
 <?php
 
-function verificaCampoObrigatorio($campo, $campoFoco=0)
+function verificaCampoObrigatorio($campo, $campoFoco)
 {
-	if(trim($_POST[$campo]) != '')
+	if(trim($_REQUEST[$campo]) != '')
 	{
 		return true;
 	}
 	else
 	{
-		marcaCampoObrigatorio(($campoFoco!=0)? $campo : $campoFoco);
+		marcaCampoObrigatorio((!$campoFoco)? $campo : $campoFoco);
 		return false;
 	}
 }
