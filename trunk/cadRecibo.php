@@ -11,8 +11,8 @@
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <link type="text/css" rel="stylesheet" href="css/main.css"  />
 <link type="text/css" rel="stylesheet" href="css/smoothness/jquery-ui-1.8.2.custom.css"  />
-<script type="text/javascript" src="js/main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+<script type="text/javascript" src="js/main.js" xmlns="http://w<ww.w3.org/1999/xhtml"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
 <script type="text/javascript" src="js/jquery.corner.js" xmlns="http://www.w3.org/1999/xhtml"></script>
 <script type="text/javascript" src="js/extenso.js" xmlns="http://www.w3.org/1999/xhtml"></script>
@@ -32,7 +32,7 @@ $.ready = function()
 	sucess_callback = function(data)
 	{
 		alert('ok');
-	}
+	  }
 
 	$("#frmCliente input[type=text]").autocomplete({
 			source: "bus/busPesquisaCliente.php",
@@ -51,7 +51,7 @@ $.ready = function()
 		$(".trInfo").css("display", "table-row");
 
 		setTimeout(function() {
-			$("#frmRecibo :input:visible:enabled:first").focus();
+			$("#servicoDescricao").focus();
 		}, 1);
 
 	}
@@ -168,132 +168,89 @@ function setHiddenValue()
 
 }
 </script>
-
-
 <title>Recibo eletrônico</title>
 </head>
 
 <body>
-  <div id="div-conteudo">
+<div id="img-logo"></div>
+<div id="div-conteudo"> 
+  
+  <!-- Logo & Nuvens Topo -->
+  <div id="img-nuvem1"></div>
+  <div id="img-slogan"></div>
 
-	<!-- Logo & Nuvens Topo -->
-	<div id="img-nuvem1"></div>
-	<div id="img-slogan"></div>
-	<div id="img-logo"></div>
-
-	<div id="div-innerContent">
-
-
-<form id="frmCliente"  method="post"  onsubmit="return false;">
-<table class="innerTable" align="center">
-	<tr>
-		<td colspan="4" class="tdTitulo">
-			Pesquisa de Clientes
-		</td>
-    </tr>
-	<tr>
-        <td colspan="4">
-        	<input type="text"  id="txtCliente" name="txtCliente" />
-			<input type='button' id="btnCliente" value='Novo' class="button" />
-        </td>
-    </tr>
-
-    <tr class="trInfo">
-		<td>
-			Cliente:
-		</td>
-		<td id="tdClienteNome" class="tdInfo">Deise Fontoura</td>
-		<td>
-			Telefone:
-		</td>
-		<td id="tdClienteTelefone" class="tdInfo">81128934</td>
-    </tr>
-    <tr class="trInfo">
-		<td>
-			Endereço:
-		</td>
-		<td colspan="3" id="tdClienteEndereco" class="tdInfo">Av. Dorival de Oliveira, 1275, Pda. 77 Gravataí Ou um endereço ainda mais longo</td>
-    </tr>
-</table>
-</form>
-<br />
-<form id='frmRecibo' onsubmit="return false;" method='post'>
-<input type="hidden" id="hdnClienteId" name="hdnClienteId">
-<table class="innerTable" align="center">
-		<tr>
-        	<td colspan="2" class="tdTitulo">Dados do Serviço</td>
-         </tr>
+  <div id="div-innerContent">
+    <form id="frmCliente"  method="post"  onsubmit="return false;">
+      <table class="innerTable" align="center">
         <tr>
-            <td class="tdGuia">
-            Recibo:
-            </td>
-            <td>
-                <input id='numeroRecibo' name='numeroRecibo' type='text' disabled="true" value="00001" />
-            </td>
+          <td colspan="4" class="tdTitulo"> Pesquisa de Clientes </td>
         </tr>
         <tr>
-            <td>
-                Descrição:
-            </td>
-            <td>
-                <textarea id='servicoDescricao' name='servicoDescricao' /></textarea>
-            </td>
+          <td colspan="4"><input type="text"  id="txtCliente" name="txtCliente" />
+            <input type='button' id="btnCliente" value='Novo' class="button" /></td>
+        </tr>
+        <tr class="trInfo">
+          <td> Cliente: </td>
+          <td id="tdClienteNome" class="tdInfo">Deise Fontoura</td>
+          <td> Telefone: </td>
+          <td id="tdClienteTelefone" class="tdInfo">81128934</td>
+        </tr>
+        <tr class="trInfo">
+          <td> Endereço: </td>
+          <td colspan="3" id="tdClienteEndereco" class="tdInfo">Av. Dorival de Oliveira, 1275, Pda. 77 Gravataí Ou um endereço ainda mais longo</td>
+        </tr>
+      </table>
+    </form>
+    <br />
+    <form id='frmRecibo' onsubmit="return false;" method='post'>
+      <input type="hidden" id="hdnClienteId" name="hdnClienteId">
+      <table class="innerTable" align="center">
+        <tr>
+          <td colspan="2" class="tdTitulo">Novo Recibo</td>
         </tr>
         <tr>
-            <td>
-            Valor:
-            </td>
-            <td>
-                <input id='servicoValor' name='servicoValor' type='text' />
-            </td>
+          <td class="tdGuia"> e-Recibo [/ Papel]: </td>
+          <td><input id='numeroRecibo' name='numeroRecibo' type='text' disabled="true" value="00001" />
+            <input id='numeroReciboPapel' name='numeroReciboPapel' type='text' /></td>
         </tr>
         <tr>
-            <td></td>
-            <td>
-                <input id='servicoValorExt' name='servicoValorExt' type='text' disabled="true" />
-            </td>
+          <td> Descrição: </td>
+          <td><textarea id='servicoDescricao' name='servicoDescricao' /></textarea></td>
         </tr>
         <tr>
-			<td>
-				Observações:
-			</td>
-			<td>
-				<input type="checkbox" id="obsIntExibir">Exibir
-			</td>
+          <td> Valor: </td>
+          <td><input id='servicoValor' name='servicoValor' type='text' /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input id='servicoValorExt' name='servicoValorExt' type='text' disabled="true" /></td>
+        </tr>
+        <tr>
+          <td> [ Observações: ]</td>
+          <td><input type="checkbox" id="obsIntExibir">
+            Exibir </td>
         </tr>
         <tr id="trObsInt">
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                <textarea id='obsInt' name='obsInt' type='text' /></textarea>
-            </td>
+          <td>&nbsp;</td>
+          <td><textarea id='obsInt' name='obsInt' type='text' /></textarea></td>
         </tr>
         <tr>
-			<td>
-				Local:
-			</td>
-			<td>
-				<input type="checkbox" id="localServicoCliente" checked="true">Usar endereço do cliente.
-			</td>
+          <td> [ Local:
+            ]</td>
+          <td><input type="checkbox" id="localServicoCliente" checked="true">
+            Usar endereço do cliente. </td>
         </tr>
         <tr id="trLocalServico">
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                <textarea id='localServico' name='localServico' type='text' /></textarea>
-            </td>
+          <td>&nbsp;</td>
+          <td><textarea id='localServico' name='localServico' type='text' /></textarea></td>
         </tr>
-		<tr>
-        	<td class="tdButtons" colspan="2">
-        		<input type='button' id="btnInserir" value='Criar Recibo' class="button" />
-	        	<input type='button' id="btnNovoRecibo" value='Novo Recibo' class="button" />
-            </td>
+        <tr>
+          <td class="tdButtons" colspan="2"><input type='button' id="btnInserir" value='Criar Recibo' class="button" />
+            <input type='button' id="btnNovoRecibo" value='Novo Recibo' class="button" /></td>
         </tr>
-    </table>
-</form>
-	</div>
+      </table>
+    </form>
   </div>
+</div>
 </body>
 </html>

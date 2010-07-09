@@ -29,15 +29,10 @@ function setaFocoPrimeroCampo()
 //Send assinc data and register callback
 function internal_submit(postUrl, form, sucess_callback)
 {
-	var formid = '#' + form.attr('id');
-
-	//$(formid + ' [type=button]').attr("oldValue", $(formid + ' [type=button]').val());
-
-	//$(formid + ' [type=button]').val(" ");
-
-	$(formid + ' [type=button]').attr("disabled", true);
-
-	//$(formid + ' #loader').css("display", "block");
+	if(typeof(document.loader)=='undefined')
+		document.loader = $("<div id='ajax_loader'></div>");
+	else
+		document.loader.appendTo($("body"));
 
 	$.ajax({
 		  url: postUrl,
@@ -52,20 +47,18 @@ function internal_submit(postUrl, form, sucess_callback)
 };
 
 function internal_callback(data, form, sucess_callback)
-{
-	var formid = '#' + form.attr('id');
+{	
+	document.loader.detach();
 
-	//$(formid + ' [type=button]').val( $(formid + ' [type=button]').attr("oldValue") );
-
-	$(formid + ' [type=button]').removeAttr("disabled");
-
-	//$(formid + ' #loader').css("display", "none");
-	
 	if(data != null && data.length > 0)
 	{
 		if(data[0] == 0)
 		{
 			sucess_callback(data);
+		}
+		else if(data[0] == 100)
+		{
+			alert(data[1]);
 		}
 		else
 		{
