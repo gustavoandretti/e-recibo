@@ -4,7 +4,7 @@
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 <!--<link type="text/css" rel="stylesheet" href="main.css"  /> -->
 <style>
-#recibo
+#Atendimento
 {
 	position:absolute;
 	width:600px;
@@ -41,7 +41,7 @@
 	  
 		<tr>
 			<td>
-				<p align='justify'>Recebemos de  $cliNome,"; if($cliCPF != ""){ $body .="CPF / CNPJ nº $cliCPF";} $body.=" estabelecido/residente no endereço $cliEndereco, a importância de R$ $servicoValor ($servicoValorExt), em  $formaPgto, referente aos serviços descritos abaixo:</p>
+				<p align='justify'>Recebemos de  $clienteNome,"; if($cliCPF != ""){ $body .="CPF / CNPJ nº $cliCPF";} $body.=" estabelecido/residente no endereço $clienteEndereco, a importância de R$ $atendimentoValor ($servicoValorExt), em  $formaPgto, referente aos serviços descritos abaixo:</p>
 			</td> 
 		</tr>
 	</table>		
@@ -53,7 +53,7 @@
 		</tr>
 		<tr>
 			<td>
-				$servicoDescricao
+				$atendimentoDescricao
 			</td>
 		</tr>
 		<tr>
@@ -72,7 +72,7 @@
 	<table>		
 		<tr>
 			<td>
-				<p align='justify'> $localServico, $dia  de  $mes de  $ano. </p>        	
+				<p align='justify'> $atendimentoEndereco, $dia  de  $mes de  $ano. </p>        	
 			</td>
 		</tr>    
 	</table>
