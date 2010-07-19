@@ -12,7 +12,7 @@
 	$mes = $data_[1];
 	$ano = $data_[2];
 
-	#Servico
+	#
 	
 	$email = $_REQUEST['atendimentoClienteId'];
 	
@@ -20,7 +20,9 @@
 		verificaCampoObrigatorio('atendimentoData') &&
 		verificaCampoData('atendimentoData') &&		
 		verificaCampoObrigatorio('atendimentoDescricao') &&
-		verificaCampoObrigatorio('atendimentoValor'))
+		($_REQUEST['atendimentoContrato'] > 0 || verificaCampoObrigatorio('atendimentoValor'))
+		
+		)
 	{
 		
 		if(trim($_REQUEST["atendimentoEndereco"]) == "")

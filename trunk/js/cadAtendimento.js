@@ -50,9 +50,22 @@ $.ready = function()
 		$("#atendimentoContrato").val(b);
 				
 		if(b > 0)
+		{
+			//se nao for edicao traz sempre o checked marcado
+			if( $("#atendimentoAtendimentoId").val().length == 0 )
+				$("#atendimentoContrato").attr("checked", true);
+			
 			$("#trAtendimentoContrato").css("display", "table-row");
+		}
 		else
 			$("#trAtendimentoContrato").css("display", "none");
+			
+		$("#atendimentoContrato").trigger("change");
+	}
+	
+	bloquear_valor_atendimento = function()
+	{
+		$("#atendimentoValor").attr("disabled", $("#atendimentoContrato").attr("checked"));
 	}
 	
 	sucess_carrega_atendimento_callback  = function(data)
@@ -110,6 +123,8 @@ $.ready = function()
 	$("#chkAtendimentoObservacaoExibir").bind("change", exibir_obs);
 	
 	document.clieteComContratoAtivo = exibir_contrato;
+	
+	$("#atendimentoContrato").bind("change", bloquear_valor_atendimento); 
 		
 	$("#btnNovoAtendimento").bind("click", novo_atendimento);
 
