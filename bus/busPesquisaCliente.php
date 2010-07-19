@@ -1,30 +1,52 @@
 <?php
 
-	error_reporting(E_ERROR);
+	error_reporting(E_ALL);
 
 	include("./validacao.php");
 
-//	include("./db.php");
+	include("./db.php");
+	
+	//used for quote_smart below
+	db_connect();
+	
+	$term = $_REQUEST["term"];
+	
+	$term = str_replace(",-. \t", ";", $term);
+	
+	$term = explode(';', $term);
+	
+	$where = "WHERE (1=1)";
+	
+	foreach($term as $data)
+	{
+		$data = quote_smart('%' . $data .'%');
+		$where .= " AND (NOME LIKE $data OR ENDERECO LIKE $data OR EMAIL LIKE $data)";
+	}
+			
+	$sql = "SELECT CLIENTEID AS id, CONCAT(NOME, ' | ', TELEFONE, ' | ', EMAIL, ' | ', ENDERECO) AS label FROM CLIENTE " . $where;
+	
+	
+	if($_REQUEST["debug"] == 1)
+		echo $sql;
+	
+	$res = db_query($sql);
+	
+	if(!$res)
+	{
+		echo "[]";
+		exit();
+	}
 
-//	$selectCli = "SELECT * FROM cliente WHERE clienteEmail like '%$email%' OR ";
-
-//	$queryCli = db_query($selectCli);
-
-//	$res = mysql_fetch_array($queryCli);
-
-	$ar = Array();
-
-	$a[] = Array("id" => "a", "label" => "teste");
-	$a[] = Array("id" => "b", "label" => "teste1");
-
-	//$a[] = "aa";
-
-	$b[] = "2";
-	$b[] = "aa";
-
-	$res[] = $a;
-	$res[] = $b;
-
-	echo json_encode($a);
+	if(mysql_num_rows($res) > 0)
+	{
+		while($t = mysql_fetch_array($res, MYSQL_ASSOC))
+			$ret[] = $t;
+		
+		echo json_encode($ret);
+	}
+	else
+		echo "[]";
+	
+	
 
 ?>

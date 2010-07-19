@@ -1,7 +1,15 @@
-body, input, td, textarea
+input, td, textarea
 {
     font-family:"Trebuchet MS", "Calibri", "Tahoma";
-    font-size:16px;
+    font-size:18px;
+    padding:2px;
+    color:#444;    
+}
+
+body
+{
+    font-family:"Trebuchet MS", "Calibri", "Tahoma";
+    font-size:12px;
     padding:2px;
     color:#444;    
     vertical-align:top;
@@ -32,17 +40,17 @@ td.tdButtons input
 
 /* Formulario de Clientes */
 
-#cliEmail, #cliNome, #cliEndereco, #servicoDescricao, #servicoValorExt, #obsRec, #obsInt, #localServico
+#clienteEmail, #clienteNome, #clienteEndereco, #atendimentoDescricao, #atendimentoObservacao, #atendimentoEndereco, #contratoObservacao, #contratoUrl, #contratoValorExt
 {
     width:400px;
 }
 
-#cliCpf
+#clienteCpf
 {
     width:150px;
 }
 
-#cliEndereco, #servicoDescricao, #obsRec, #obsInt, #localServico
+#clienteEndereco, #atendimentoDescricao, #atendimentoObservacao, #atendimentoEndereco
 {
     height:80px;
 }
@@ -54,10 +62,10 @@ td.tdButtons input
 
 #txtCliente
 {
-	width:500px;
+	width:470px;
 }
 
-#numeroRecibo, #numeroReciboPapel
+#atendimentoPapel, #contratoQtdMensal, #contratoQtdExtra
 {
 	width:60px;
 	text-align:center;
@@ -70,8 +78,11 @@ td.tdButtons input
 
 .button
 {
-	background: #ffffff url(../images/bg-button.png) 50% 50% repeat-x;	
+	background: #ffffff url(../images/button-bg.png) 50% 50% repeat-x;	
 	color: #444;
+	padding-left:15px;
+	padding-right:15px;
+	border-bottom:solid 2px #777;
 }
 
 .trInfo
@@ -84,6 +95,11 @@ td.tdButtons input
 	font-weight: bold;
 }
 
+#tdClienteNome, #tdClienteTelefone
+{
+	width:1000px;
+}
+
 .innerTable
 {
 	width: 600px;
@@ -92,7 +108,7 @@ td.tdButtons input
 .tdTitulo
 {
 	color:#666;
-	font-size:28pt;
+	font-size:22pt;
 	font-weight: bold;
 }
 
@@ -100,15 +116,14 @@ td.tdButtons input
 {
     position:absolute;
     width:850px;
-    left:50%;
-    margin-left:-425px;
+    left:200px;
     top:0px;
 }
 
 #div-innerContent
 {
 	position:absolute;
-	top: 40px;
+	top: 50px;
 	width: 800px;
 	text-align: center;	
 }
@@ -163,6 +178,16 @@ body
 	width:20px;
 	height:20px;
 	background:url(../images/ajax-loader.gif) no-repeat;
+	top:5px;
+	right:10px;
+}
+
+#ajax_loader_ok
+{
+	position:absolute;
+	width:20px;
+	height:20px;
+	background:url(../images/ajax-ok.png) no-repeat;
 	top:5px;
 	right:10px;
 }

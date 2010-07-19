@@ -147,7 +147,7 @@ padding:-10px;
 	<table class='conteudo'>   
 		<tr>
 			<td class='text'>
-				<p align='justify'>Recebemos de  <strong>$cliNome</strong>, "; if($cliCPF != ''){ $body .="CPF / CNPJ nº <strong>$cliCPF</strong> ";} $body.=" estabelecido/residente no endere&ccedil;o <strong>$cliEndereco</strong> , a import&acirc;ncia de R$ <strong>$servicoValor</strong> (<strong>$servicoValorExt</strong>), em  <strong>$formaPgto</strong>, referente aos servi&ccedil;os descritos abaixo:</p>
+				<p align='justify'>Recebemos de  <strong>$clienteNome</strong>, "; if($cliCPF != ''){ $body .="CPF / CNPJ nº <strong>$cliCPF</strong> ";} $body.=" estabelecido/residente no endere&ccedil;o <strong>$clienteEndereco</strong> , a import&acirc;ncia de R$ <strong>$atendimentoValor</strong> (<strong>$servicoValorExt</strong>), em  <strong>$formaPgto</strong>, referente aos servi&ccedil;os descritos abaixo:</p>
 			</td> 
 		</tr>
 	</table>
@@ -159,7 +159,7 @@ padding:-10px;
 		</tr>
 		<tr>
 			<td>
-				$servicoDescricao
+				$atendimentoDescricao
 			</td>
 		</tr>
 		<tr>
@@ -174,7 +174,7 @@ padding:-10px;
 		</tr>
 		<tr>
 			<td>
-				<p align='justify'> $localServico, $dia  de  $mes de  $ano. </p>        	
+				<p align='justify'> $atendimentoEndereco, $dia  de  $mes de  $ano. </p>        	
 			</td>
 		</tr>    
 	</table>           
