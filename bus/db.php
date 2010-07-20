@@ -4,7 +4,7 @@
 	
 	function db_connect()
 	{
-		return mysql_connect('127.0.0.1','root','');
+		return mysql_connect('127.0.0.1','faciltec_user1','111mudar@@');
 	}
 
 	function db_update($table, $fields)
@@ -115,7 +115,7 @@
 			if(!$connect)
 				throw new Exception(mysql_error());
 	
-			$mydb = mysql_select_db('e-recibo',$connect);
+			$mydb = mysql_select_db('faciltec_crm',$connect);
 			
 			if(!$mydb)
 				throw new Exception(mysql_error());
